@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { addMessage } from '../store/actions/addMessage'
 
 class AddMessage extends Component {
     state = {
         user: 'Olaa',
-        text: ''
+        text: '',
+        type: 'client'
       }
 
     handleChange = (e) => {
@@ -15,10 +18,7 @@ class AddMessage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addMessage(this.state)
-        this.setState({
-            text: ''
-        })
+        this.props.addMessage(this.state);
     }
 
     render() { 
@@ -33,5 +33,11 @@ class AddMessage extends Component {
          );
     }
 }
- 
-export default AddMessage;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      addMessage: (message) => { dispatch(addMessage(message))}
+    }
+  }
+ //first parameter is mapStateToProps
+export default connect(null, mapDispatchToProps)(AddMessage);

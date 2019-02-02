@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+
  
 class Host extends Component {
   render() {
     return (
-        <p>View for host</p>
+        <p>Impement HostApp component here</p>
     );
   }
 }
