@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import HostApp from './components/HostApp'
 
  
 class Host extends Component {
   render() {
     return (
-        <p>Impement HostApp component here</p>
+        <div>
+            <HostApp />
+        </div> 
     );
   }
 }

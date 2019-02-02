@@ -25,7 +25,8 @@ class Messages extends Component {
     render() {
         
       const {messages} = this.props;
-      console.log('messages == ', this.props);
+      console.log('messages == ', this.props.messages);
+      this.props.messages.sort((a,b) => (a.createdDate < b.createdDate) ? 1 : ((b.createdDate < a.createdDate) ? -1 : 0)); 
       if(messages !== undefined) {
         return (
             <ul className="Messages-list">

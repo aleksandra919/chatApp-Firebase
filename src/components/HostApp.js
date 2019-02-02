@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux';
 
-class ClientApp extends Component {
+class HostApp extends Component {
   render() {
     const { messages } = this.props;
     return (
@@ -15,7 +15,7 @@ class ClientApp extends Component {
             messages={messages}/>
         <AddMessage addMessage={this.addMessage}
                     messages={messages}
-                    userType="client"/>
+                    userType="host"/>
 
       </div>
     );
@@ -35,4 +35,4 @@ export default compose(
   firestoreConnect([
     { collection: 'chat'}
   ])
-)(ClientApp);
+)(HostApp);

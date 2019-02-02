@@ -4,15 +4,14 @@ import { addMessage } from '../store/actions/addMessage'
 
 class AddMessage extends Component {
     state = {
-        user: 'Olaa',
         text: '',
-        type: 'client'
+        type: ''
       }
 
     handleChange = (e) => {
         this.setState({
-            user: this.state.user,
-            text: e.target.value
+            text: e.target.value,
+            type: this.props.userType
         })
     }
 
