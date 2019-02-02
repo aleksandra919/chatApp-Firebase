@@ -23,12 +23,16 @@ class Messages extends Component {
     };
 
     render() {
+        
       const {messages} = this.props;
-      return (
-        <ul className="Messages-list">
-          {messages.map(m => this.renderMessage(m))}
-        </ul>
-      );
+      console.log('messages == ', this.props);
+      if(messages !== undefined) {
+        return (
+            <ul className="Messages-list">
+            {messages.map(m => this.renderMessage(m))}
+            </ul>
+        );
+      }
     }
   }
   

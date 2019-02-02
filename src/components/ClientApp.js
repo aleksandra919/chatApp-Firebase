@@ -3,6 +3,8 @@ import '../style/App.css';
 import Messages from './Messages'
 import AddMessage from './AddMessage'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux';
 
 class ClientApp extends Component {
 
@@ -15,13 +17,14 @@ class ClientApp extends Component {
   // }
 
   render() {
-    console.log(this.props)
+    const { messages } = this.props;
+    console.log('this props',this.props)
     return (
       <div className="App">
         <Messages 
-            messages={this.props.messages}/>
+            messages={messages}/>
         <AddMessage addMessage={this.addMessage}
-                    messages={this.props.messages}/>
+                    messages={messages}/>
 
       </div>
     );
@@ -29,10 +32,20 @@ class ClientApp extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-      messages: state.messages
-    }
+  // console.log("ola",state)
+  // console.log('aaa', state.firestore.ordered.chat);
+
+  if(state.firestore.ordered.chat) {
+    return {messages: state.firestore.ordered.chat} 
+  } else {
+    return {messages: state.message.messages} 
+  }
 }
 
 
-export default connect(mapStateToProps)(ClientApp);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'chat'}
+  ])
+)(ClientApp);
