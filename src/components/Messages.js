@@ -11,11 +11,15 @@ class Messages extends Component {
         let textAlign = ((message.type === "host" && this.props.userType === "host") || 
                          (message.type === "client" && this.props.userType === "client")) ?
                          'message-data align-right': 'message-data';
+
+        let milliseconds = message.createdAt.toMillis();
+        let dateToDisplay = new Date(milliseconds).toString().slice(0, 25);
+        
         return(
             <li className='clearfix' key={message.id}>
                 <div className={textAlign}>
                     <i className="fa fa-circle circle"></i><span className="message-data-name">{message.type}</span> 
-                    <span className="message-data-time">{message.createdDate}</span> &nbsp; &nbsp;
+                    <span className="message-data-time">{dateToDisplay}</span> &nbsp; &nbsp;
                 </div>  
                 <div className={userType}>
                     {message.text}
@@ -26,7 +30,7 @@ class Messages extends Component {
 
     render() {        
       const {messages} = this.props;
-      this.props.messages.sort((a,b) => (a.createdDate > b.createdDate) ? 1 : ((b.createdDate > a.createdDate) ? -1 : 0)); 
+      this.props.messages.sort((a,b) => (a.createdAt > b.createdAt) ? 1 : ((b.createdAt > a.createdAt) ? -1 : 0)); 
       if(messages !== undefined) {
         return (
             <div className="app-history"

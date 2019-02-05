@@ -1,4 +1,3 @@
-import moment from 'moment';
 
 export const addMessage = (message) => {
     return (dispatch, getState, { getFirebase, getFirestore}) => {
@@ -6,7 +5,7 @@ export const addMessage = (message) => {
         const firestore = getFirestore();
         firestore.collection('chat').add({
             ...message,
-            createdDate: moment().format('MMMM Do YYYY, h:mm:ss'),
+            createdAt: new Date(),
             id: Math.random()
             
         }).then(() => {
