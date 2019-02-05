@@ -4,8 +4,18 @@ class Home extends Component {
   render() {
     return (
         <div>
-            <h2>Chat app</h2>
-            <p>App to communicate client-host.</p>
+            <h2>Live chat</h2>
+            <p>Application enable to chat between host and client in real time</p>
+               
+            <p>Application has view for client (http://domain.name/client) and host. (http://domain.name/host)</p>
+            <p>All massages are store on firebase</p>
+
+            <p>Application was build using:
+              <li>React.js</li>
+              <li>Redux</li>
+              <li>Reactstrap</li>
+              <li>Firebase</li>
+            </p>
         </div>
     );
   }

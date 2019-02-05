@@ -7,7 +7,6 @@ class Client extends Component {
         <div>
             <ClientView />
         </div>
-
     );
   }
 }

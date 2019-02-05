@@ -1,8 +1,9 @@
-/* 
-$green: #86BB71;
-$blue: #94C2ED;
-$orange: #E38968;
-$gray: #92959E; 
+
+/* Main color in app
+  clean: #A7D2CB
+  butter: #F2D388
+  salmon: #C98474
+  eggplant: #874C62
 */
 
 .app {
@@ -13,163 +14,143 @@ $gray: #92959E;
 }
 
 .app-header {
-  padding: 20px;
+  padding: 10px;
   border-bottom: 2px solid white;
 }
-  
+
 .app-header img {
-    float: left;
-  }
-  
+  float: left;
+}
+
 .app-about {
-    float: left;
-    padding-left: 10px;
-    margin-top: 6px;
-  }
-  
+  float: left;
+  padding-left: 10px;
+  margin-top: 6px;
+}
+
 .app-with {
   font-weight: bold;
   font-size: 16px;
   color: 'red'
 }
 
-.app .fa-star {
-  float: right;
-  color: #D8DADF;
-  font-size: 20px;
-  margin-top: 12px;
+.app-history {
+  padding: 15px 10px 10px;
+  border-bottom: 2px solid white;
+  overflow-y: scroll;
+  height: 400px;
 }
+
 li {
   list-style-type: none;
 }
 
-
-.app-history {
-  padding: 30px 30px 20px;
-  border-bottom: 2px solid white;
-  overflow-y: scroll;
-  height: 575px;
-}  
-  .message-data {
-    margin-bottom: 15px;
-  }
-  
-  .message-data-time {
-    color: lighten(#92959E, 8%);
-    padding-left: 6px;
-  }
-
-  .message-data-name {
-    font-weight: bold;
-    padding-right: 5px;
-  }
-  
-  .message {      
-    color: white;
-    padding: 18px 20px;
-    line-height: 26px;
-    font-size: 16px;
-    border-radius: 7px;
-    margin-bottom: 30px;
-    width: 90%;
-    position: relative;
-  }  
-    .message:after {
-      bottom: 100%;
-      left: 7%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-bottom-color: #86BB71;
-      border-width: 10px;
-      margin-left: -10px;
-    }
-
-  
-  .my-message {
-    background:#86BB71;
-  }
-  
-  .other-message {
-    background: #94C2ED;
-  }
-    .other-message:after {
-      border-bottom-color: #94C2ED;
-      left: 93%;
-    }
-
-.app-message {
-  padding: 30px;
-} 
-  .app-message textarea {
-    width: 100%;
-    border: none;
-    padding: 10px 20px;
-    font: 14px/22px "Lato", Arial, sans-serif;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    resize: none;
-  }
-  
-  .fa-file-o, .fa-file-image-o {
-    font-size: 16px;
-    color: gray;
-    cursor: pointer;
-  }
-  
-  button {
-    float: right;
-    color: #94C2ED;
-    font-size: 16px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    background: #F2F5F8;
-  }
-    
-    button:hover {
-      color: darken(#94C2ED, 7%);
-    }
-
-.online, .offline, .me {
-  margin-right: 3px;
-  font-size: 10px;
+.message-data {
+  margin-bottom: 15px;
 }
 
-.online {
-color: $#86BB71;
+.message-data-time {
+  color: lighten(#874C62, 8%);
+  font-size: 12px;
+  padding-left: 6px;
 }
 
-.offline {
-color: #E38968;
+.message-data-name {
+  font-weight: bold;
+  font-size: 12px;
+  padding-right: 5px;
 }
 
 .circle {
-  color: #E38968;
-  padding-right: 5px;
-} 
+  color: #C98474;
+  padding-right: 3px;
+  font-size: 12px;
+}
+
+.message {
+  color: white;
+  padding: 10px 15px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  width: 90%;
+  position: relative;
+}
+
+.message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #A7D2CB;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.my-message {
+  background: #A7D2CB;
+}
+
+.other-message {
+  background: #F2D388;
+}
+
+.other-message:after {
+  border-bottom-color: #F2D388;
+  left: 93%;
+}
+
+.add-message {
+  padding: 5px;
+}
+
+.add-message textarea {
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  resize: none;
+}
+
+button {
+  float: right;
+  color: #C98474;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #F2F5F8;
+}
+
+button:hover {
+  color: darken(#C98474, 7%);
+}
 
 .align-left {
-text-align: left;
+  text-align: left;
 }
 
 .align-right {
-text-align: right;
+  text-align: right;
 }
 
 .float-right {
-float: right;
+  float: right;
 }
 
 .clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }

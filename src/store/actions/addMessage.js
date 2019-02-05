@@ -6,7 +6,7 @@ export const addMessage = (message) => {
         const firestore = getFirestore();
         firestore.collection('chat').add({
             ...message,
-            createdDate: moment().format('MMMM Do YYYY, h:mm:ss a'),
+            createdDate: moment().format('MMMM Do YYYY, h:mm:ss'),
             id: Math.random()
             
         }).then(() => {

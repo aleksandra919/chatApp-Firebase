@@ -1,29 +1,20 @@
-/* Coolors Exported Palette - coolors.co/424b54-e1ce7a-ebcfb2-c5baaf-ffffff */
-
-/* 
-$green: #86BB71;
-$blue: #94C2ED;
-$orange: #E38968;
-$gray: #92959E; 
-*/
-
-
 body {
   background: #C5DDEB;
   font: 14px/20px "Lato", Arial, sans-serif;
-  padding: 40px 0;
+  padding: 10px 0;
   color: white;
 }
 
 .container {
-margin: 0 auto;
-width: 750px;
-border-radius: 5px;
+  margin: 0 auto;
+  width: 750px;
+  border-radius: 5px;
 }
 
 ul.header {
-  background: #6A6C75;
+  background: #874C62;
   padding: 0;
+  margin-bottom: 0;
 }
 
 ul.header li {
@@ -42,14 +33,13 @@ ul.header li a {
 
 .content {
   color: #92959E;
-  padding: 20px;
 }
 
 .content h2 {
-  padding: 0;
-  margin: 0;
+  padding-top: 30px;
+  color: #434651;
 }
 
 .active {
-  background-color:#E38968;
+  background-color: #C98474;
 }

@@ -1,6 +1,5 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-import 'firebase/auth' //do wywalenie
 
   // Initialize Firebase
   var config = {

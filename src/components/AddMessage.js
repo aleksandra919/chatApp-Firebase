@@ -18,23 +18,23 @@ class AddMessage extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.addMessage(this.state);
+        this.myTextInput.value = '';
     }
 
     render() { 
         return ( 
-        <div className="app-message clearfix" >
-            <form className="app-message clearfix" 
+        <div className="add-message clearfix" >
+            <form className="add-message clearfix" 
                   onSubmit={this.handleSubmit}>
                 <textarea name="message-to-send" 
                           id="message-to-send" 
-                          placeholder ="Type your message" 
+                          ref={ref => this.myTextInput = ref} 
+                          placeholder ="Type your message..." 
                           rows="3"
                           onChange={this.handleChange} 
                 />
                 <button>Send</button>
             </form>
-            <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
-            <i class="fa fa-file-image-o"></i>
         </div>
          );
     }
@@ -45,5 +45,5 @@ const mapDispatchToProps = (dispatch) => {
       addMessage: (message) => { dispatch(addMessage(message))}
     }
   }
- //first parameter is mapStateToProps
+
 export default connect(null, mapDispatchToProps)(AddMessage);
