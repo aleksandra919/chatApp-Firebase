@@ -1,103 +1,175 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  border-radius: 12px;
-  border: 3px solid rgba(66, 75, 84, 1);
+/* 
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E; 
+*/
+
+.app {
+  background: #F2F5F8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #434651;
+}
+
+.app-header {
+  padding: 20px;
+  border-bottom: 2px solid white;
+}
+  
+.app-header img {
+    float: left;
+  }
+  
+.app-about {
+    float: left;
+    padding-left: 10px;
+    margin-top: 6px;
+  }
+  
+.app-with {
+  font-weight: bold;
+  font-size: 16px;
+  color: 'red'
+}
+
+.app .fa-star {
+  float: right;
+  color: #D8DADF;
+  font-size: 20px;
+  margin-top: 12px;
+}
+li {
+  list-style-type: none;
+}
+
+
+.app-history {
+  padding: 30px 30px 20px;
+  border-bottom: 2px solid white;
+  overflow-y: scroll;
+  height: 575px;
+}  
+  .message-data {
+    margin-bottom: 15px;
+  }
+  
+  .message-data-time {
+    color: lighten(#92959E, 8%);
+    padding-left: 6px;
+  }
+
+  .message-data-name {
+    font-weight: bold;
+    padding-right: 5px;
+  }
+  
+  .message {      
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 90%;
+    position: relative;
+  }  
+    .message:after {
+      bottom: 100%;
+      left: 7%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: #86BB71;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+
+  
+  .my-message {
+    background:#86BB71;
+  }
+  
+  .other-message {
+    background: #94C2ED;
+  }
+    .other-message:after {
+      border-bottom-color: #94C2ED;
+      left: 93%;
+    }
+
+.app-message {
   padding: 30px;
+} 
+  .app-message textarea {
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    font: 14px/22px "Lato", Arial, sans-serif;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .fa-file-o, .fa-file-image-o {
+    font-size: 16px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  button {
+    float: right;
+    color: #94C2ED;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #F2F5F8;
+  }
+    
+    button:hover {
+      color: darken(#94C2ED, 7%);
+    }
+
+.online, .offline, .me {
+  margin-right: 3px;
+  font-size: 10px;
 }
 
-/* .App-header {
-  background-color: #262626;
-  overflow: visible;
-  width: 100%;
-  text-align: center;
-  color: white;
-} */
-
-.Messages-list {
-  padding: 20px 0;
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-  list-style: none;
-  padding-left: 0;
-  flex-grow: 1;
-  overflow: auto;
+.online {
+color: $#86BB71;
 }
 
-.Messages-message {
-  display: flex;
-  margin-top: 10px;
+.offline {
+color: #E38968;
 }
 
-.Messages-message.currentMember {
-  /* justify-content: flex-end; */
-  flex-direction: row-reverse;
-  text-align: right;
+.circle {
+  color: #E38968;
+  padding-right: 5px;
+} 
+
+.align-left {
+text-align: left;
 }
 
-.Message-content {
-  display: inline-block;
+.align-right {
+text-align: right;
 }
 
-.currentMember > .Message-content {
-  align-items: flex-end;
+.float-right {
+float: right;
 }
 
-.Messages-message > .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 10px -10px;
-  background-color: rgba(197, 186, 175, 1)
-}
-
-.Message-content > .username {
-  display: block;
-  color: gray;
-  font-size: 14px;
-  padding-bottom: 4px;
-}
-
-.Message-content > .text {
-  padding: 10px;
-  max-width: 400px;
-  margin: 0;
-  border-radius: 12px;
-  background-color:rgba(197, 186, 175, 1);
-  color: white;
-  display: inline-block;
-}
-
-.currentMember > .Message-content .text {
-  background-color: rgba(235, 207, 178, 1);
-}
-
-form {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 0 auto 40px;
-}
-
-input {
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(66, 75, 84, 1);
-  flex-grow: 1;
-}
-
-button {
-  padding: 5px 10px;
-  font-size: 16px;
-  background-color: rgba(66, 75, 84, 1);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  margin-left: 10px;
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }

@@ -22,12 +22,19 @@ class AddMessage extends Component {
 
     render() { 
         return ( 
-        <div>
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor="message">message:</label>
-                <input type="text" id="message" onChange={this.handleChange} />
+        <div className="app-message clearfix" >
+            <form className="app-message clearfix" 
+                  onSubmit={this.handleSubmit}>
+                <textarea name="message-to-send" 
+                          id="message-to-send" 
+                          placeholder ="Type your message" 
+                          rows="3"
+                          onChange={this.handleChange} 
+                />
                 <button>Send</button>
             </form>
+            <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+            <i class="fa fa-file-image-o"></i>
         </div>
          );
     }

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ClientApp from './components/ClientApp'
+import ClientView from './components/ClientView'
  
 class Client extends Component {
   render() {
     return (
         <div>
-            <ClientApp />
+            <ClientView />
         </div>
 
     );

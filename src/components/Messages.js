@@ -1,22 +1,19 @@
-
 import {Component} from "react";
 import React from "react";
 
 
-
 class Messages extends Component {
     renderMessage(message) {
-        let userType = (message.type === "host") ? 'Messages-message currentMember': 'Messages-message';
+        let userType = ((message.type === "host" && this.props.userType === "host") || (message.type === "client" && this.props.userType === "client"))? 'message other-message float-right': 'message my-message';
+        let textAlign = ((message.type === "host" && this.props.userType === "host") || (message.type === "client" && this.props.userType === "client"))? 'message-data align-right': 'message-data';
         return(
-            <li className={userType} key={message.id}>
-                <span 
-                    className='avatar'
-                />
-                <div className='Message-content'>
-                    <div className='username'>
-                        {message.user} 
-                    </div>
-                    <div className="text">{message.text}</div>       
+            <li className='clearfix' key={message.id}>
+                <div className={textAlign}>
+                    <i className="fa fa-circle circle"></i><span className="message-data-name">{message.type}</span> 
+                    <span className="message-data-time">{message.createdDate}</span> &nbsp; &nbsp;
+                </div>  
+                <div className={userType}>
+                    {message.text}
                 </div>
             </li>
         )
@@ -25,13 +22,15 @@ class Messages extends Component {
     render() {
         
       const {messages} = this.props;
-      console.log('messages == ', this.props.messages);
-      this.props.messages.sort((a,b) => (a.createdDate < b.createdDate) ? 1 : ((b.createdDate < a.createdDate) ? -1 : 0)); 
+      this.props.messages.sort((a,b) => (a.createdDate > b.createdDate) ? 1 : ((b.createdDate > a.createdDate) ? -1 : 0)); 
       if(messages !== undefined) {
         return (
-            <ul className="Messages-list">
-            {messages.map(m => this.renderMessage(m))}
-            </ul>
+            <div className="app-history">
+                <ul>
+                    {messages.map(m => this.renderMessage(m))}
+                </ul>
+            </div>
+   
         );
       }
     }

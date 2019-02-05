@@ -1,32 +1,37 @@
 /* Coolors Exported Palette - coolors.co/424b54-e1ce7a-ebcfb2-c5baaf-ffffff */
 
-/* RGB
-szary: rgba(66, 75, 84, 1);
-zolty: rgba(225, 206, 122, 1);
-rozowy: rgba(235, 207, 178, 1);
-bezowy: rgba(197, 186, 175, 1);
-bialy: rgba(255, 255, 255, 1); 
+/* 
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E; 
 */
 
 
 body {
-  background-color:rgba(255, 255, 255, 1);
-  color: rgba(66, 75, 84, 1);
-  padding: 20px;
-  margin: 0;
+  background: #C5DDEB;
+  font: 14px/20px "Lato", Arial, sans-serif;
+  padding: 40px 0;
+  color: white;
 }
-h1, h2, p, ul, li {
-  font-family: sans-serif;
+
+.container {
+margin: 0 auto;
+width: 750px;
+border-radius: 5px;
 }
+
+ul.header {
+  background: #6A6C75;
+  padding: 0;
+}
+
 ul.header li {
   display: inline;
   list-style-type: none;
   margin: 0;
 }
-ul.header {
-  background-color:rgba(66, 75, 84, 1);
-  padding: 0;
-}
+
 ul.header li a {
   color: #FFF;
   font-weight: bold;
@@ -34,18 +39,17 @@ ul.header li a {
   padding: 20px;
   display: inline-block;
 }
+
 .content {
-  background-color: #FFF;
+  color: #92959E;
   padding: 20px;
 }
+
 .content h2 {
   padding: 0;
   margin: 0;
 }
-.content li {
-  margin-bottom: 10px;
-}
 
 .active {
-  background-color:rgba(225, 206, 122, 1);
+  background-color:#E38968;
 }

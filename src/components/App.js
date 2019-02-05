@@ -2,34 +2,48 @@ import React, { Component } from 'react';
 import '../style/App.css';
 import Messages from './Messages'
 import AddMessage from './AddMessage'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux';
+
 
 class App extends Component {
-  state = {
-    messages: [
-      {text: '1Message', id: 1, user: 'Ola', type: 'client'},
-      {text: '2Message', id: 2, user: 'Ola', type: 'host'},
-      {text: '3Message', id: 3, user: 'Ola', type: 'client'},
-    ]
-  }
-
-  addMessage = (message) => {
-    message.id = Math.random();
-    let messages = [...this.state.messages, message]
-    this.setState({
-      messages: messages
-    })
-  }
-
   render() {
+    const { messages } = this.props;
     return (
-      <div className="App">
-        {/* <header className="App-header">ChattApp</header> */}
+      <div className="app">
+        <div className="app-header clearfix">
+          <img src={this.props.chatWithImg} alt="avatar" />
+          <div className="app-about">
+            <div className="app-with">Chat with {this.props.chatWith}</div>
+          </div>
+          <i class="fa fa-star"></i>
+        </div>
+
         <Messages 
-            messages={this.state.messages}/>
-        <AddMessage addMessage={this.addMessage}/>
+            messages={messages}
+            userType= {this.props.userType} />
+
+        <AddMessage addMessage={this.addMessage}
+                    messages={messages}
+                    userType= {this.props.userType} />
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  if(state.firestore.ordered.chat) {
+    return {messages: state.firestore.ordered.chat} 
+  } else {
+    return {messages: state.message.messages} 
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'chat'}
+  ])
+)(App);
