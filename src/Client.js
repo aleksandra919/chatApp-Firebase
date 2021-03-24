@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ClientView from './components/ClientView'
- 
+
 class Client extends Component {
   render() {
     return (
@@ -10,5 +10,5 @@ class Client extends Component {
     );
   }
 }
- 
+
 export default Client;

@@ -1,23 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './style/index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Main from './Main';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './store/reducers/rootReducer';
-import thunk from 'redux-thunk';
-import { reduxFirestore, getFirestore } from 'redux-firestore';
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
-import fbConfig from './config/fbConfig';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-const store = createStore(rootReducer, 
-    compose(
-        applyMiddleware(thunk.withExtraArgument({getFirestore,getFirebase})),
-        reduxFirestore(fbConfig),
-        reactReduxFirebase(fbConfig)
-    )
+import "./style/index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Main from "./Main";
+
+import store from "./store/store";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-ReactDOM.render(<Provider store={store}><Main /></Provider>, document.getElementById('root'));
-

@@ -1,60 +1,59 @@
-import {Component} from "react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
+const Messages = (props) => {
+  const { userType, messages } = props;
+  const appHistory = useRef(null);
 
-class Messages extends Component {
-    renderMessage(message) {
-        let userType = ((message.type === "host" && this.props.userType === "host") || 
-                        (message.type === "client" && this.props.userType === "client")) ? 
-                        'message other-message float-right': 'message my-message';
+  const renderMessage = (message, user) => {
+    let userTypeClass =
+      (message.type === "host" && user === "host") ||
+      (message.type === "client" && user === "client")
+        ? "message other-message float-right"
+        : "message my-message";
 
-        let textAlign = ((message.type === "host" && this.props.userType === "host") || 
-                         (message.type === "client" && this.props.userType === "client")) ?
-                         'message-data align-right': 'message-data';
+    let textAlign =
+      (message.type === "host" && user === "host") ||
+      (message.type === "client" && user === "client")
+        ? "message-data align-right"
+        : "message-data";
 
-        let milliseconds = message.createdAt.toMillis();
-        let dateToDisplay = new Date(milliseconds).toString().slice(0, 25);
-        
-        return(
-            <li className='clearfix' key={message.id}>
-                <div className={textAlign}>
-                    <i className="fa fa-circle circle"></i><span className="message-data-name">{message.type}</span> 
-                    <span className="message-data-time">{dateToDisplay}</span> &nbsp; &nbsp;
-                </div>  
-                <div className={userType}>
-                    {message.text}
-                </div>
-            </li>
-        )
-    };
+    // TODO: ADD DATE TO MESSAGE
+    // let milliseconds = message.createdAt.toMillis();
+    // let dateToDisplay = new Date(milliseconds).toString().slice(0, 25);
+    let dateToDisplay = "2019-02-21";
 
-    render() {        
-      const {messages} = this.props;
-      this.props.messages.sort((a,b) => (a.createdAt > b.createdAt) ? 1 : ((b.createdAt > a.createdAt) ? -1 : 0)); 
-      if(messages !== undefined) {
-        return (
-            <div className="app-history"
-                ref={(ref) => {
-                    this.appHistory = ref;
-            }}>
-                <ul>
-                    {messages.map(m => this.renderMessage(m))}
-                </ul>
-            </div>
-        );
-      }
-    }
+    return (
+      <li className="clearfix" key={message.id}>
+        <div className={textAlign}>
+          <i className="fa fa-circle circle"></i>
+          <span className="message-data-name">{message.type}</span>
+          <span className="message-data-time">{dateToDisplay}</span> &nbsp;
+          &nbsp;
+        </div>
+        <div className={userTypeClass}>{message.text}</div>
+      </li>
+    );
+  };
 
-    scrollToBottom() {
-        const scrollHeight = this.appHistory.scrollHeight;
-        const height = this.appHistory.clientHeight;
-        const maxScrollTop = scrollHeight - height;
-        this.appHistory.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
-      }
+  const scrollToBottom = () => {
+    const scrollHeight = appHistory.current.scrollHeight;
+    const height = appHistory.current.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    appHistory.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+  };
 
-      componentDidUpdate() {
-        this.scrollToBottom();
-      }
-  }
-  
+  useEffect(() => {
+    scrollToBottom();
+  });
+
+  // messages.sort((a, b) =>
+  //   a.createdAt > b.createdAt ? 1 : b.createdAt > a.createdAt ? -1 : 0
+  // );
+  return (
+    <div className="app-history" ref={appHistory}>
+      <ul>{messages.map((m) => renderMessage(m, userType))}</ul>
+    </div>
+  );
+};
+
 export default Messages;

@@ -1,18 +1,9 @@
-import App from './App'
-import React, { Component } from 'react';
-import hostAvatar from '../assets//hostAvatar.jpg';
+import App from "./App";
+import React from "react";
+import hostAvatar from "../assets//hostAvatar.jpg";
 
-class ClientView extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <App
-                userType="client" 
-                chatWith='Host'
-                chatWithImg={hostAvatar}
-                />
-         );
-    }
-}
- 
-export default ClientView;
+const HostView = () => {
+  return <App userType="client" chatWith="host" chatWithImg={hostAvatar} />;
+};
+
+export default HostView;
