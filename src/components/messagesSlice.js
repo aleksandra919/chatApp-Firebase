@@ -5,13 +5,13 @@ const initialState = [
     id: "1",
     type: "host",
     text: "Hello, how can I help you?",
-    createdAt: "9997-12-31T23:59:59Z",
+    createdAt: "3/25/2021, 11:37:29 AM",
   },
   {
     id: "2",
     type: "client",
     text: "I want to fix..",
-    createdAt: "9998-12-31T23:59:59Z",
+    createdAt: "3/25/2021, 11:38:39 AM",
   },
 ];
 
@@ -23,13 +23,13 @@ const messagesSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(text, type, id) {
+      prepare(text, type, message) {
         return {
           payload: {
-            id,
+            id: message.id,
             text,
             type,
-            createdAt: "9999-12-31T23:59:59Z",
+            createdAt: new Date().toLocaleString(),
           },
         };
       },
