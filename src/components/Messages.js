@@ -17,17 +17,12 @@ const Messages = (props) => {
         ? "message-data align-right"
         : "message-data";
 
-    // TODO: ADD DATE TO MESSAGE
-    // let milliseconds = message.createdAt.toMillis();
-    // let dateToDisplay = new Date(milliseconds).toString().slice(0, 25);
-    let dateToDisplay = "2019-02-21";
-
     return (
       <li className="clearfix" key={message.id}>
         <div className={textAlign}>
           <i className="fa fa-circle circle"></i>
           <span className="message-data-name">{message.type}</span>
-          <span className="message-data-time">{dateToDisplay}</span> &nbsp;
+          <span className="message-data-time">{message.createdAt}</span> &nbsp;
           &nbsp;
         </div>
         <div className={userTypeClass}>{message.text}</div>
@@ -46,9 +41,12 @@ const Messages = (props) => {
     scrollToBottom();
   });
 
-  // messages.sort((a, b) =>
-  //   a.createdAt > b.createdAt ? 1 : b.createdAt > a.createdAt ? -1 : 0
-  // );
+  messages
+    .slice()
+    .sort((a, b) =>
+      a.createdAt > b.createdAt ? 1 : b.createdAt > a.createdAt ? -1 : 0
+    );
+
   return (
     <div className="app-history" ref={appHistory}>
       <ul>{messages.map((m) => renderMessage(m, userType))}</ul>

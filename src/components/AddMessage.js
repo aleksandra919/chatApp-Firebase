@@ -26,10 +26,9 @@ const AddMessage = (props) => {
       id: nanoid(),
       type: userType,
       text: text,
-      createdAt: "9998-12-31T23:59:59Z",
     };
 
-    dispatch(addMessage(text, userType, message.id));
+    dispatch(addMessage(text, userType, message));
   };
 
   const addMes = () => {
