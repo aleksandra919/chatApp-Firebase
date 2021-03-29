@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 
 import reactjs from "./assets/reactjs.png";
+import firebase from "./assets/firebase.png";
 import redux from "./assets/redux.png";
 import reactstrap from "./assets/reactstrap.png";
 
@@ -11,7 +12,10 @@ class Home extends Component {
       <Fragment>
         <div>
           <h2>Live chat</h2>
-          <p>Application enable to chat between host and client in real time</p>
+          <p>
+            Application enable to chat between host and client in real time. All
+            messages are store in Firebase Realtime Database
+          </p>
         </div>
         <div>
           <h2>Application has two views:</h2>
@@ -36,8 +40,16 @@ class Home extends Component {
             <Card>
               <CardBody>
                 <CardTitle tag="h5">Redux</CardTitle>
-                <CardText>E.g. createSlice</CardText>
+                <CardText>E.g. configureStore</CardText>
                 <CardImg top width="100%" src={redux} alt="Redux icon" />
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody>
+                <CardTitle tag="h5">Firebase</CardTitle>
+                <CardText>Firebase Realtime Database</CardText>
+                <CardImg top width="100%" src={firebase} alt="Firebase icon" />
               </CardBody>
             </Card>
 

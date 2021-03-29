@@ -7,7 +7,7 @@ Application has two view for client and host
 
 (http://domain.name/host)
 
-![](chat.gif)
+![](chatFirebase.gif)
 
 Application was build using:
 React.js

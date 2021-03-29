@@ -6,26 +6,28 @@ const Messages = (props) => {
 
   const renderMessage = (message, user) => {
     let userTypeClass =
-      (message.type === "host" && user === "host") ||
-      (message.type === "client" && user === "client")
+      (message.value.type === "host" && user === "host") ||
+      (message.value.type === "client" && user === "client")
         ? "message other-message float-right"
         : "message my-message";
 
     let textAlign =
-      (message.type === "host" && user === "host") ||
-      (message.type === "client" && user === "client")
+      (message.value.type === "host" && user === "host") ||
+      (message.value.type === "client" && user === "client")
         ? "message-data align-right"
         : "message-data";
 
     return (
-      <li className="clearfix" key={message.id}>
+      <li className="clearfix" key={message.key}>
         <div className={textAlign}>
           <i className="fa fa-circle circle"></i>
-          <span className="message-data-name">{message.type}</span>
-          <span className="message-data-time">{message.createdAt}</span> &nbsp;
-          &nbsp;
+          <span className="message-data-name">{message.value.type}</span>
+          <span className="message-data-time">
+            {message.value.createdAt}
+          </span>{" "}
+          &nbsp; &nbsp;
         </div>
-        <div className={userTypeClass}>{message.text}</div>
+        <div className={userTypeClass}>{message.value.text}</div>
       </li>
     );
   };

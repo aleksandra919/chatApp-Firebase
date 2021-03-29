@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addMessage } from "./messagesSlice";
-
 import { useFirebase } from "react-redux-firebase";
 
 const AddMessage = (props) => {
   const { userType } = props;
   const [text, setText] = useState("");
-  const dispatch = useDispatch();
 
   const firebase = useFirebase();
-
-  var db = firebase.firestore();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -21,40 +15,12 @@ const AddMessage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setText(" ");
-
-    const message = {
-      id: nanoid(),
-      type: userType,
-      text: text,
-    };
-
-    dispatch(addMessage(text, userType, message));
-  };
-
-  const addMes = () => {
-    console.log("add mes");
     return firebase.push("chat", {
-      id: "3",
-      type: "client",
-      text: "bla bla",
-      createdAt: "9998-12-31T23:59:59Z",
+      id: nanoid(),
+      text: text,
+      type: userType,
+      createdAt: new Date().toLocaleString(),
     });
-  };
-
-  const addMes2 = () => {
-    db.collection("chat")
-      .add({
-        id: "3",
-        type: "client",
-        text: "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        createdAt: "9998-12-31T23:59:59Z",
-      })
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch((error) => {
-        console.error("Error adding document: ", error);
-      });
   };
 
   return (
@@ -70,8 +36,6 @@ const AddMessage = (props) => {
         ></textarea>
         <button>Send</button>
       </form>
-      <button onClick={addMes}>add</button>
-      <button onClick={addMes2}>add2</button>
     </div>
   );
 };

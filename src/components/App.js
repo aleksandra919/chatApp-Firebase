@@ -8,22 +8,14 @@ import { useSelector } from "react-redux";
 import { useFirebaseConnect, isLoaded, isEmpty } from "react-redux-firebase";
 
 const App = (props) => {
-  const messages = useSelector((state) => state.messages);
-
   const { userType, chatWith, chatWithImg } = props;
 
   useFirebaseConnect(["chat"]);
 
   const chat = useSelector((state) => state.firebase.ordered.chat);
 
-  console.log("chat", chat);
-
   if (!isLoaded(chat)) {
     return <div>Loading...</div>;
-  }
-
-  if (isEmpty(chat)) {
-    return <div>Todos List Is Empty</div>;
   }
 
   return (
@@ -40,7 +32,11 @@ const App = (props) => {
       </Row>
       <Row>
         <Col>
-          <Messages messages={chat} userType={userType} />
+          {isEmpty(chat) ? (
+            <div className="app-history">No chat history.</div>
+          ) : (
+            <Messages messages={chat} userType={userType} />
+          )}
           <AddMessage userType={userType} />
         </Col>
       </Row>
